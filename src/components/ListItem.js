@@ -10,7 +10,7 @@ class ListItem extends Component {
 		const { titleStyle } = styles;
 		const { id, title } = this.props.library;
 
-		return (
+		return (	
 			<TouchableWithoutFeedback onPress={() => this.props.selectLibrary(id)}>
 				<View>
 					<CardSection>
@@ -29,4 +29,8 @@ const styles = {
 	}
 }
 
-export default connect(null, actions)(ListItem);
+const mapStateToProps = state => {
+	return { selectedLibraryId: state.selectedLibraryId }
+};
+
+export default connect(mapStateToProps, actions)(ListItem);
